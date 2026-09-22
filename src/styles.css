@@ -18,7 +18,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -103,9 +104,10 @@ button {
 
 .workspace {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1fr 340px;
   gap: 18px;
-  margin-bottom: 18px;
+  margin: 18px 0;
+  align-items: start;
 }
 
 .panel {
@@ -173,6 +175,16 @@ input {
   padding: 0 12px;
 }
 
+select {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  padding: 0 8px;
+  background: #ffffff;
+  color: #172033;
+}
+
 .records {
   display: grid;
   gap: 12px;
@@ -211,7 +223,8 @@ input {
 @media (max-width: 860px) {
   .metrics,
   .workspace,
-  .field-grid {
+  .field-grid,
+  .machine-grid {
     grid-template-columns: 1fr;
   }
 
@@ -220,3 +233,348 @@ input {
     padding: 24px;
   }
 }
+
+/* ---------- 热定型机位放行台 ---------- */
+
+.rule-chips {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rule-chips li {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #526071;
+  background: color-mix(in srgb, var(--primary) 7%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 18px 0 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-weight: 600;
+}
+
+.banner + .metrics {
+  margin-top: 18px;
+}
+
+.banner-ok {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.banner-bad {
+  color: #9f1239;
+  background: #fff1f2;
+  border-color: #fda4af;
+}
+
+.banner button {
+  min-height: 30px;
+  padding: 0 12px;
+}
+
+.muted {
+  color: #64748b;
+}
+
+.ok-text {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.bad-text {
+  color: #be123c;
+  font-weight: 600;
+}
+
+.warn-text {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.machine-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.machine {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  align-content: center;
+  min-height: 128px;
+  padding: 14px 8px;
+  border-radius: 10px;
+}
+
+.machine b {
+  font-size: 18px;
+}
+
+.machine-busy {
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  background: color-mix(in srgb, var(--primary) 6%, #ffffff);
+}
+
+.machine-free {
+  border-style: dashed;
+  background: #fbfdff;
+}
+
+.machine-sample {
+  font-weight: 700;
+}
+
+.machine small {
+  color: #64748b;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge-info {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.badge-warn {
+  color: #b45309;
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+.badge-muted {
+  color: #475569;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.badge-ok {
+  color: #15803d;
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.badge-bad {
+  color: #be123c;
+  background: #fff1f2;
+  border-color: #fda4af;
+}
+
+.form-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chips .chip-on {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #ffffff;
+}
+
+.queue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.queue-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  border-color: color-mix(in srgb, var(--secondary) 26%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 6%, #ffffff);
+}
+
+.queue-item b {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  border-radius: 7px;
+  background: var(--secondary);
+  color: #ffffff;
+}
+
+.queue-item span {
+  font-weight: 600;
+}
+
+.queue-item small {
+  display: block;
+  margin-top: 3px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.tickets {
+  display: grid;
+  gap: 14px;
+}
+
+.ticket {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fbfdff;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  scroll-margin-top: 20px;
+}
+
+.ticket-selected {
+  outline: 2px solid var(--secondary);
+  outline-offset: 1px;
+}
+
+.ticket-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ticket-meta {
+  margin: 0;
+  font-size: 13px;
+}
+
+.param-chips span {
+  font-size: 12.5px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px 9px;
+  color: #334155;
+}
+
+.progress {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  color: #92400e;
+  font-size: 13.5px;
+}
+
+.sub-form {
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, var(--border));
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.sub-form h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #334155;
+}
+
+details {
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+
+summary {
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #475569;
+  padding: 4px 0;
+}
+
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 12.5px;
+}
+
+.mini-table th,
+.mini-table td {
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.mini-table th {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.timeline {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.timeline.history {
+  gap: 8px;
+  font-size: 13.5px;
+}
+
+.history-link {
+  display: inline;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: var(--secondary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
